@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>function_description_db.redb_server_com</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://course.cs.tau.ac.il/secws12/?q=node/20">REDB Project</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="function_description_db-module.html">Package&nbsp;function_description_db</a> ::
+        Module&nbsp;redb_server_com
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="function_description_db.redb_server_com-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="function_description_db.redb_server_com-module.html">Module function_description_db.redb_server_com</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Methods and utilities required for communicating with the client.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># standard library imports</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">simplejson</tt> <tt class="py-keyword">as</tt> <tt class="py-name">json</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"># related third party imports</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module function_description_db.redb_server_utils=function_description_db.redb_server_utils-module.html"><a title="function_description_db.redb_server_utils" class="py-name" href="#" onclick="return doclink('link-0', 'redb_server_utils', 'link-0');">redb_server_utils</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function function_description_db.redb_server_utils._decode_dict()=function_description_db.redb_server_utils-module.html#_decode_dict"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-1', '_decode_dict', 'link-1');">_decode_dict</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#==============================================================================</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># Communication Data Types</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#==============================================================================</tt> </tt>
+<a name="Request"></a><div id="Request-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="Request-toggle" onclick="return toggle('Request');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Request-class.html">Request</a><tt class="py-op">:</tt> </tt>
+</div><div id="Request-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Request-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">    A request for descriptions for a specific function.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="Request.__init__"></a><div id="Request.__init__-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="Request.__init__-toggle" onclick="return toggle('Request.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Request-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">                 <tt class="py-param">primary_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">                 <tt class="py-param">filtering_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">                 <tt class="py-param">matching_grade_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">                 <tt class="py-param">num_of_returned_comments</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.__init__-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Variable function_description_db.models.Function.primary_attributes=function_description_db.models.Function-class.html#primary_attributes"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-2', 'primary_attributes', 'link-2');">primary_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-3', 'primary_attributes', 'link-2');">primary_attributes</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Variable function_description_db.models.Function.filtering_attributes=function_description_db.models.Function-class.html#filtering_attributes"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-4', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-5', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Variable function_description_db.models.Function.matching_grade_attributes=function_description_db.models.Function-class.html#matching_grade_attributes"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-6', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-7', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">num_of_returned_comments</tt> <tt class="py-op">=</tt> <tt class="py-name">num_of_returned_comments</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="Request.to_json"></a><div id="Request.to_json-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="Request.to_json-toggle" onclick="return toggle('Request.to_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Request-class.html#to_json">to_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.to_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.to_json-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"primary_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-8', 'primary_attributes', 'link-2');">primary_attributes</a></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"filtering_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-9', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"matching_grade_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-10', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"num_of_returned_comments"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">num_of_returned_comments</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">req_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="Request.from_json"></a><div id="Request.from_json-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="Request.from_json-toggle" onclick="return toggle('Request.from_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Request-class.html#from_json">from_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">json_obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.from_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.from_json-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">req_dict</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">json_obj</tt><tt class="py-op">,</tt> <tt class="py-name">object_hook</tt><tt class="py-op">=</tt><tt id="link-11" class="py-name"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-11', '_decode_dict', 'link-1');">_decode_dict</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-12', 'primary_attributes', 'link-2');">primary_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"primary_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-13', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"filtering_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-14', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"matching_grade_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">num_of_returned_comments</tt> <tt class="py-op">=</tt> <tt class="py-name">req_dict</tt><tt class="py-op">[</tt><tt class="py-string">"num_of_returned_comments"</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="Response"></a><div id="Response-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="Response-toggle" onclick="return toggle('Response');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Response-class.html">Response</a><tt class="py-op">:</tt> </tt>
+</div><div id="Response-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Response-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    A response from the server to a request.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="Response.__init__"></a><div id="Response.__init__-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="Response.__init__-toggle" onclick="return toggle('Response.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Response-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                  <tt class="py-param">suggested_descriptions_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.__init__-expanded"><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">suggested_descriptions</tt> <tt class="py-op">=</tt> <tt class="py-name">suggested_descriptions_list</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="Response.to_json"></a><div id="Response.to_json-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="Response.to_json-toggle" onclick="return toggle('Response.to_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Response-class.html#to_json">to_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.to_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.to_json-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">suggested_descriptions</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="Response.from_json"></a><div id="Response.from_json-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="Response.from_json-toggle" onclick="return toggle('Response.from_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Response-class.html#from_json">from_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">json_obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.from_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.from_json-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">suggested_descriptions</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">json_obj</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                                                 <tt class="py-name">object_hook</tt><tt class="py-op">=</tt><tt id="link-15" class="py-name"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-15', '_decode_dict', 'link-1');">_decode_dict</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="Submit"></a><div id="Submit-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="Submit-toggle" onclick="return toggle('Submit');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Submit-class.html">Submit</a><tt class="py-op">:</tt> </tt>
+</div><div id="Submit-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Submit-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    A Submit includes data gathered about a specific function.</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="Submit.__init__"></a><div id="Submit.__init__-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="Submit.__init__-toggle" onclick="return toggle('Submit.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Submit-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                 <tt class="py-param">primary_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                 <tt class="py-param">filtering_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                 <tt class="py-param">matching_grade_attributes</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                 <tt class="py-param">comments_and_name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Submit.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Submit.__init__-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-16', 'primary_attributes', 'link-2');">primary_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-17', 'primary_attributes', 'link-2');">primary_attributes</a></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-18', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-19', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-20', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-21', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">comments_and_name</tt> <tt class="py-op">=</tt> <tt class="py-name">comments_and_name</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="Submit.to_json"></a><div id="Submit.to_json-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="Submit.to_json-toggle" onclick="return toggle('Submit.to_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Submit-class.html#to_json">to_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Submit.to_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Submit.to_json-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"primary_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-22', 'primary_attributes', 'link-2');">primary_attributes</a></tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"filtering_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-23', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"matching_grade_attributes"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-24', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"comments_and_name"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">comments_and_name</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">sub_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="Submit.from_json"></a><div id="Submit.from_json-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="Submit.from_json-toggle" onclick="return toggle('Submit.from_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Submit-class.html#from_json">from_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">json_obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Submit.from_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Submit.from_json-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">sub_dict</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">json_obj</tt><tt class="py-op">,</tt> <tt class="py-name">object_hook</tt><tt class="py-op">=</tt><tt id="link-25" class="py-name"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-25', '_decode_dict', 'link-1');">_decode_dict</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-26', 'primary_attributes', 'link-2');">primary_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"primary_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-27', 'filtering_attributes', 'link-4');">filtering_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"filtering_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-28', 'matching_grade_attributes', 'link-6');">matching_grade_attributes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"matching_grade_attributes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">comments_and_name</tt> <tt class="py-op">=</tt> <tt class="py-name">sub_dict</tt><tt class="py-op">[</tt><tt class="py-string">"comments_and_name"</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="Compare"></a><div id="Compare-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="Compare-toggle" onclick="return toggle('Compare');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Compare-class.html">Compare</a><tt class="py-op">:</tt> </tt>
+</div><div id="Compare-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Compare-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">    A comparison request.</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">    Compare functions_from_exe_1 from exe_name_1 with functions_from_exe_2</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">    from exe_name_2.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="Compare.__init__"></a><div id="Compare.__init__-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="Compare.__init__-toggle" onclick="return toggle('Compare.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Compare-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                 <tt class="py-param">exe_name_1</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                 <tt class="py-param">functions_from_exe_1</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                 <tt class="py-param">exe_name_2</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                 <tt class="py-param">functions_from_exe_2</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                 <tt class="py-param">attr_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                 <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Compare.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Compare.__init__-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_1</tt> <tt class="py-op">=</tt> <tt class="py-name">exe_name_1</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_1</tt> <tt class="py-op">=</tt> <tt class="py-name">functions_from_exe_1</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_2</tt> <tt class="py-op">=</tt> <tt class="py-name">exe_name_2</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_2</tt> <tt class="py-op">=</tt> <tt class="py-name">functions_from_exe_2</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attr_list</tt> <tt class="py-op">=</tt> <tt class="py-name">attr_list</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="Compare.to_json"></a><div id="Compare.to_json-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="Compare.to_json-toggle" onclick="return toggle('Compare.to_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Compare-class.html#to_json">to_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Compare.to_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Compare.to_json-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"exe_name_1"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_1</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"functions_from_exe_1"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_1</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"exe_name_2"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_2</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"functions_from_exe_2"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_2</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"attr_list"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attr_list</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">cmp_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="Compare.from_json"></a><div id="Compare.from_json-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="Compare.from_json-toggle" onclick="return toggle('Compare.from_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.Compare-class.html#from_json">from_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">json_obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Compare.from_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Compare.from_json-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">cmp_dict</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">json_obj</tt><tt class="py-op">,</tt> <tt class="py-name">object_hook</tt><tt class="py-op">=</tt><tt id="link-29" class="py-name"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-29', '_decode_dict', 'link-1');">_decode_dict</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_1</tt> <tt class="py-op">=</tt> <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"exe_name_1"</tt><tt class="py-op">]</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_1</tt> <tt class="py-op">=</tt> <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"functions_from_exe_1"</tt><tt class="py-op">]</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exe_name_2</tt> <tt class="py-op">=</tt> <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"exe_name_2"</tt><tt class="py-op">]</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">functions_from_exe_2</tt> <tt class="py-op">=</tt> <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"functions_from_exe_2"</tt><tt class="py-op">]</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">attr_list</tt> <tt class="py-op">=</tt> <tt class="py-name">cmp_dict</tt><tt class="py-op">[</tt><tt class="py-string">"attr_list"</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="CompareResponse"></a><div id="CompareResponse-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="CompareResponse-toggle" onclick="return toggle('CompareResponse');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.redb_server_com.CompareResponse-class.html">CompareResponse</a><tt class="py-op">:</tt> </tt>
+</div><div id="CompareResponse-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CompareResponse-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">    Comparison results.</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="CompareResponse.__init__"></a><div id="CompareResponse.__init__-def"><a name="L136"></a><tt class="py-lineno">136</tt> <a class="py-toggle" href="#" id="CompareResponse.__init__-toggle" onclick="return toggle('CompareResponse.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.CompareResponse-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                  <tt class="py-param">compare_results</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CompareResponse.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CompareResponse.__init__-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">compare_results</tt> <tt class="py-op">=</tt> <tt class="py-name">compare_results</tt> </tt>
+</div><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="CompareResponse.to_json"></a><div id="CompareResponse.to_json-def"><a name="L141"></a><tt class="py-lineno">141</tt> <a class="py-toggle" href="#" id="CompareResponse.to_json-toggle" onclick="return toggle('CompareResponse.to_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.CompareResponse-class.html#to_json">to_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CompareResponse.to_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CompareResponse.to_json-expanded"><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">compare_results</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
+<a name="CompareResponse.from_json"></a><div id="CompareResponse.from_json-def"><a name="L144"></a><tt class="py-lineno">144</tt> <a class="py-toggle" href="#" id="CompareResponse.from_json-toggle" onclick="return toggle('CompareResponse.from_json');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.redb_server_com.CompareResponse-class.html#from_json">from_json</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">json_obj</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CompareResponse.from_json-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CompareResponse.from_json-expanded"><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">compare_results</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">json_obj</tt><tt class="py-op">,</tt> <tt class="py-name">object_hook</tt><tt class="py-op">=</tt><tt id="link-30" class="py-name"><a title="function_description_db.redb_server_utils._decode_dict" class="py-name" href="#" onclick="return doclink('link-30', '_decode_dict', 'link-1');">_decode_dict</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://course.cs.tau.ac.il/secws12/?q=node/20">REDB Project</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Oct 07 23:40:45 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

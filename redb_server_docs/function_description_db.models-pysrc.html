@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>function_description_db.models</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://course.cs.tau.ac.il/secws12/?q=node/20">REDB Project</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="function_description_db-module.html">Package&nbsp;function_description_db</a> ::
+        Module&nbsp;models
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="function_description_db.models-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="function_description_db.models-module.html">Module function_description_db.models</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Django models representing functions and descriptions.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># related third party imports</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module function_description_db.models=function_description_db.models-module.html"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-0', 'models', 'link-0');">models</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable function_description_db.models.MAX_EXE_NAME_LENGTH=function_description_db.models-module.html#MAX_EXE_NAME_LENGTH"><a title="function_description_db.models.MAX_EXE_NAME_LENGTH" class="py-name" href="#" onclick="return doclink('link-1', 'MAX_EXE_NAME_LENGTH', 'link-1');">MAX_EXE_NAME_LENGTH</a></tt> <tt class="py-op">=</tt> <tt class="py-number">255</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable function_description_db.models.EXE_DIGEST_SIZE_IN_BYTES=function_description_db.models-module.html#EXE_DIGEST_SIZE_IN_BYTES"><a title="function_description_db.models.EXE_DIGEST_SIZE_IN_BYTES" class="py-name" href="#" onclick="return doclink('link-2', 'EXE_DIGEST_SIZE_IN_BYTES', 'link-2');">EXE_DIGEST_SIZE_IN_BYTES</a></tt> <tt class="py-op">=</tt> <tt class="py-number">32</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable function_description_db.models.FUNC_DIGEST_SIZE_IN_BYTES=function_description_db.models-module.html#FUNC_DIGEST_SIZE_IN_BYTES"><a title="function_description_db.models.FUNC_DIGEST_SIZE_IN_BYTES" class="py-name" href="#" onclick="return doclink('link-3', 'FUNC_DIGEST_SIZE_IN_BYTES', 'link-3');">FUNC_DIGEST_SIZE_IN_BYTES</a></tt> <tt class="py-op">=</tt> <tt class="py-number">32</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable function_description_db.models.MAX_DATE_LENGTH=function_description_db.models-module.html#MAX_DATE_LENGTH"><a title="function_description_db.models.MAX_DATE_LENGTH" class="py-name" href="#" onclick="return doclink('link-4', 'MAX_DATE_LENGTH', 'link-4');">MAX_DATE_LENGTH</a></tt> <tt class="py-op">=</tt> <tt class="py-number">50</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="Function"></a><div id="Function-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="Function-toggle" onclick="return toggle('Function');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.models.Function-class.html">Function</a><tt class="py-op">(</tt><tt class="py-base-class">models</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Function-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Function-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">    A function, comprised of its attributes.</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable function_description_db.models.Function.first_addr=function_description_db.models.Function-class.html#first_addr"><a title="function_description_db.models.Function.first_addr" class="py-name" href="#" onclick="return doclink('link-5', 'first_addr', 'link-5');">first_addr</a></tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-6', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">PositiveIntegerField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable function_description_db.models.Function.exe_name=function_description_db.models.Function-class.html#exe_name"><a title="function_description_db.models.Function.exe_name" class="py-name" href="#" onclick="return doclink('link-7', 'exe_name', 'link-7');">exe_name</a></tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-8', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">CharField</tt><tt class="py-op">(</tt><tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt id="link-9" class="py-name"><a title="function_description_db.models.MAX_EXE_NAME_LENGTH" class="py-name" href="#" onclick="return doclink('link-9', 'MAX_EXE_NAME_LENGTH', 'link-1');">MAX_EXE_NAME_LENGTH</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable function_description_db.models.Function.exe_md5=function_description_db.models.Function-class.html#exe_md5"><a title="function_description_db.models.Function.exe_md5" class="py-name" href="#" onclick="return doclink('link-10', 'exe_md5', 'link-10');">exe_md5</a></tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-11', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">CharField</tt><tt class="py-op">(</tt><tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt id="link-12" class="py-name"><a title="function_description_db.models.EXE_DIGEST_SIZE_IN_BYTES" class="py-name" href="#" onclick="return doclink('link-12', 'EXE_DIGEST_SIZE_IN_BYTES', 'link-2');">EXE_DIGEST_SIZE_IN_BYTES</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt id="link-13" class="py-name" targets="Variable function_description_db.models.Function.func_md5=function_description_db.models.Function-class.html#func_md5"><a title="function_description_db.models.Function.func_md5" class="py-name" href="#" onclick="return doclink('link-13', 'func_md5', 'link-13');">func_md5</a></tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-14', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">CharField</tt><tt class="py-op">(</tt><tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt id="link-15" class="py-name"><a title="function_description_db.models.FUNC_DIGEST_SIZE_IN_BYTES" class="py-name" href="#" onclick="return doclink('link-15', 'FUNC_DIGEST_SIZE_IN_BYTES', 'link-3');">FUNC_DIGEST_SIZE_IN_BYTES</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable function_description_db.models.Function.ins_num=function_description_db.models.Function-class.html#ins_num"><a title="function_description_db.models.Function.ins_num" class="py-name" href="#" onclick="return doclink('link-16', 'ins_num', 'link-16');">ins_num</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-17', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">PositiveIntegerField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt id="link-18" class="py-name" targets="Variable function_description_db.models.Function.filtering_attributes=function_description_db.models.Function-class.html#filtering_attributes"><a title="function_description_db.models.Function.filtering_attributes" class="py-name" href="#" onclick="return doclink('link-18', 'filtering_attributes', 'link-18');">filtering_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-19', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable function_description_db.models.Function.matching_grade_attributes=function_description_db.models.Function-class.html#matching_grade_attributes"><a title="function_description_db.models.Function.matching_grade_attributes" class="py-name" href="#" onclick="return doclink('link-20', 'matching_grade_attributes', 'link-20');">matching_grade_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-21', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt id="link-22" class="py-name" targets="Variable function_description_db.models.Function.primary_attributes=function_description_db.models.Function-class.html#primary_attributes"><a title="function_description_db.models.Function.primary_attributes" class="py-name" href="#" onclick="return doclink('link-22', 'primary_attributes', 'link-22');">primary_attributes</a></tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-23', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="Function.__unicode__"></a><div id="Function.__unicode__-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="Function.__unicode__-toggle" onclick="return toggle('Function.__unicode__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.models.Function-class.html#__unicode__">__unicode__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Function.__unicode__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Function.__unicode__-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="Description"></a><div id="Description-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="Description-toggle" onclick="return toggle('Description');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="function_description_db.models.Description-class.html">Description</a><tt class="py-op">(</tt><tt class="py-base-class">models</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Description-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Description-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    A function, comprised of its attributes.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">    Each Description is related to a single Function</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Variable function_description_db.models.Description.function=function_description_db.models.Description-class.html#function"><a title="function_description_db.models.Description.function" class="py-name" href="#" onclick="return doclink('link-24', 'function', 'link-24');">function</a></tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-25', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">ForeignKey</tt><tt class="py-op">(</tt><tt id="link-26" class="py-name" targets="Class function_description_db.models.Function=function_description_db.models.Function-class.html"><a title="function_description_db.models.Function" class="py-name" href="#" onclick="return doclink('link-26', 'Function', 'link-26');">Function</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-comment"># A json.sdump-ed string.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt id="link-27" class="py-name" targets="Variable function_description_db.models.Description.func_name_and_cmts=function_description_db.models.Description-class.html#func_name_and_cmts"><a title="function_description_db.models.Description.func_name_and_cmts" class="py-name" href="#" onclick="return doclink('link-27', 'func_name_and_cmts', 'link-27');">func_name_and_cmts</a></tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-28', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt id="link-29" class="py-name" targets="Variable function_description_db.models.Description.date=function_description_db.models.Description-class.html#date"><a title="function_description_db.models.Description.date" class="py-name" href="#" onclick="return doclink('link-29', 'date', 'link-29');">date</a></tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="function_description_db.models" class="py-name" href="#" onclick="return doclink('link-30', 'models', 'link-0');">models</a></tt><tt class="py-op">.</tt><tt class="py-name">CharField</tt><tt class="py-op">(</tt><tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="function_description_db.models.MAX_DATE_LENGTH" class="py-name" href="#" onclick="return doclink('link-31', 'MAX_DATE_LENGTH', 'link-4');">MAX_DATE_LENGTH</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="Description.__unicode__"></a><div id="Description.__unicode__-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="Description.__unicode__-toggle" onclick="return toggle('Description.__unicode__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="function_description_db.models.Description-class.html#__unicode__">__unicode__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Description.__unicode__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Description.__unicode__-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://course.cs.tau.ac.il/secws12/?q=node/20">REDB Project</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Oct 07 23:40:45 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
